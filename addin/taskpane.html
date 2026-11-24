@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>交利(Wordアドイン)</title>
+<script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+<style>
+  body{ margin:0; padding:16px; font:14px/1.6 "Noto Sans JP","Yu Gothic",sans-serif; color:#1a1a1c; background:#fff; }
+  h1{ font-size:18px; margin:0 0 4px; }
+  p{ margin:8px 0; }
+  .lead{ color:#4d4d4d; font-size:13px; }
+  button{ display:block; width:100%; margin:8px 0; padding:10px 12px; font:inherit; border-radius:8px; border:1px solid #0017C1; background:#fff; color:#0017C1; cursor:pointer; }
+  button.primary{ background:#0017C1; color:#fff; }
+  button:disabled{ opacity:.5; cursor:default; }
+  #status{ margin-top:12px; padding:8px 10px; border-radius:6px; background:#f2f2f2; font-size:13px; min-height:1.6em; }
+  #status.err{ background:#fde8e8; color:#9b1c1c; }
+  ul{ padding-left:1.2em; font-size:12px; color:#4d4d4d; }
+</style>
+</head>
+<body>
+  <h1>漢文エディタ 交利</h1>
+  <p class="lead">Word の本文を、交利の縦書きエディタで編集して、Word に書き戻します。</p>
+  <button class="primary" id="btn-selection" disabled>選択範囲を交利で開く</button>
+  <button id="btn-body" disabled>文書全体を交利で開く</button>
+  <div id="status" role="status" aria-live="polite">Word の読み込みを待っています…</div>
+  <ul>
+    <li>文字を選んでからボタンを押します(何も選ばないと、カーソルの位置に挿入します)。</li>
+    <li>編集後は「Wordに反映して閉じる」を押します。</li>
+    <li>振り仮名・熟字訓はルビ、送り仮名・訓点は小さい字、傍線・波線は下線になります。</li>
+    <li>交利で開いた範囲は、Word 側で直さない限り、次に開くとき注釈も元どおりに戻ります。</li>
+  </ul>
+  <script src="ooxml.js"></script>
+  <script src="taskpane.js"></script>
+</body>
+</html>

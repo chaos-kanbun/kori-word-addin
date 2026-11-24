@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 交利の Word アドインの設定ファイル。
+     下の「https://YOUR-NAME.github.io/YOUR-REPO」を、交利を公開している GitHub Pages のアドレスに置き換えてください(全部で 10 か所)。 -->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+  <Id>6f0b2d5e-3c1a-4b7e-9a42-7d1e5c0a8f31</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>交利</ProviderName>
+  <DefaultLocale>ja-JP</DefaultLocale>
+  <DisplayName DefaultValue="漢文エディタ 交利"/>
+  <Description DefaultValue="Word の本文を、縦書きの漢文エディタ「交利」で編集し、振り仮名・送り仮名・訓点などを付けて書き戻します。"/>
+  <IconUrl DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-80.png"/>
+  <SupportUrl DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/help.html"/>
+  <AppDomains>
+    <AppDomain>https://YOUR-NAME.github.io</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Document"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Desc"/>
+            <LearnMoreUrl resid="Help.Url"/>
+          </GetStarted>
+          <FunctionFile resid="Taskpane.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="KouriGroup">
+                <Label resid="Group.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16"/>
+                  <bt:Image size="32" resid="Icon.32"/>
+                  <bt:Image size="80" resid="Icon.80"/>
+                </Icon>
+                <Control xsi:type="Button" id="KouriOpenButton">
+                  <Label resid="Button.Label"/>
+                  <Supertip>
+                    <Title resid="Button.Label"/>
+                    <Description resid="Button.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16"/>
+                    <bt:Image size="32" resid="Icon.32"/>
+                    <bt:Image size="80" resid="Icon.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>KouriTaskpane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-16.png"/>
+        <bt:Image id="Icon.32" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-32.png"/>
+        <bt:Image id="Icon.80" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/taskpane.html"/>
+        <bt:Url id="Help.Url" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/help.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="Group.Label" DefaultValue="交利"/>
+        <bt:String id="Button.Label" DefaultValue="交利で編集"/>
+        <bt:String id="GetStarted.Title" DefaultValue="交利を使えるようになりました"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="Button.Tip" DefaultValue="選んだ範囲を、縦書きの漢文エディタ「交利」で編集します。"/>
+        <bt:String id="GetStarted.Desc" DefaultValue="「ホーム」タブの「交利で編集」を押すと、作業ウィンドウが開きます。"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
