@@ -65,6 +65,34 @@
     });
   }
 
+  // 交利のページを画像にしたものを、内容コントロールに並べる(見た目は交利のまま)。文字としての本文は、画像の代替テキストに入れる
+  async function applyImagesToWord(id, doc, pages, width, sizes){
+    await Word.run(async (context) => {
+      const cc = context.document.contentControls.getByTag(TAG_PREFIX + id).getFirst();
+      cc.clear();
+      await context.sync();
+      for(let i = 0; i < pages.length; i++){
+        const w = width, h = width * sizes[i][1] / sizes[i][0];
+        let pic;
+        if(i === 0){
+          pic = cc.insertInlinePictureFromBase64(pages[i], 'Start');
+        } else {
+          const para = cc.insertParagraph('', 'End');
+          pic = para.insertInlinePictureFromBase64(pages[i], 'Start');
+        }
+        pic.lockAspectRatio = false;
+        pic.width = w; pic.height = h;
+        pic.altTextTitle = '交利 ' + (i + 1) + '/' + pages.length + ' ページ';
+        pic.altTextDescription = doc.text.slice(0, 1000);
+        await context.sync();
+      }
+      cc.tag = TAG_PREFIX + id;
+      cc.load('text');
+      await context.sync();
+      await saveRecord(id, { doc, wordText: cc.text, image: true });
+    });
+  }
+
   async function openEditor(kind){
     if(dialog){ status('交利のウィンドウがすでに開いています。', true); return; }
     let prep;
@@ -77,8 +105,24 @@
         status('ウィンドウを開けませんでした:' + res.error.message, true); return;
       }
       dialog = res.value;
+      let img = null;  // 画像を受け取っている途中のもの
       dialog.addEventHandler(Office.EventType.DialogMessageReceived, async (arg) => {
         let m; try{ m = JSON.parse(arg.message); } catch(err){ return; }
+        if(m.type === 'img-start'){
+          img = { doc: m.doc, width: m.width, sizes: m.sizes, parts: Array.from({ length: m.count }, () => []) };
+          status('画像を受け取っています…');
+          return;
+        }
+        if(m.type === 'img-chunk' && img){ img.parts[m.page][m.part] = m.data; return; }
+        if(m.type === 'img-end' && img){
+          try{
+            status('Word に反映しています…');
+            await applyImagesToWord(prep.id, img.doc, img.parts.map(p => p.join('')), img.width, img.sizes);
+            status('Word に反映しました。');
+          } catch(err){ status('Word への反映に失敗しました:' + err.message, true); }
+          img = null; dialog.close(); dialog = null;
+          return;
+        }
         if(m.type === 'ready'){
           dialog.messageChild(JSON.stringify({ type: 'load', doc: prep.doc }));
           status('交利で編集中です。');
