@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 交利の Word アドインの設定ファイル。
-     下の「https://github.com/chaos-kanbun/kori-word-addin」を、交利を公開している GitHub Pages のアドレスに置き換えてください(全部で 10 か所)。 -->
+     下の「https://YOUR-NAME.github.io/YOUR-REPO」を、交利を公開している GitHub Pages のアドレスに置き換えてください(全部で 10 か所)。 -->
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
@@ -12,9 +12,9 @@
   <DefaultLocale>ja-JP</DefaultLocale>
   <DisplayName DefaultValue="漢文エディタ 交利"/>
   <Description DefaultValue="Word の本文を、縦書きの漢文エディタ「交利」で編集し、振り仮名・送り仮名・訓点などを付けて書き戻します。"/>
-  <IconUrl DefaultValue="https://github.com/chaos-kanbun/kori-word-addin/addin/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://github.com/chaos-kanbun/kori-word-addin/addin/icon-80.png"/>
-  <SupportUrl DefaultValue="https://github.com/chaos-kanbun/kori-word-addin/help.html"/>
+  <IconUrl DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-80.png"/>
+  <SupportUrl DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/help.html"/>
   <AppDomains>
     <AppDomain>https://YOUR-NAME.github.io</AppDomain>
   </AppDomains>
@@ -22,7 +22,7 @@
     <Host Name="Document"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://github.com/chaos-kanbun/kori-word-addin/addin/taskpane.html"/>
+    <SourceLocation DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -68,13 +68,13 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16" DefaultValue="https://github.com/chaos-kanbun/kori-word-addin/addin/icon-16.png"/>
-        <bt:Image id="Icon.32" DefaultValue="https://github.com/chaos-kanbun/kori-word-addin/addin/icon-32.png"/>
-        <bt:Image id="Icon.80" DefaultValue="https://github.com/chaos-kanbun/kori-word-addin/addin/icon-80.png"/>
+        <bt:Image id="Icon.16" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-16.png"/>
+        <bt:Image id="Icon.32" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-32.png"/>
+        <bt:Image id="Icon.80" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://github.com/chaos-kanbun/kori-word-addin/addin/taskpane.html"/>
-        <bt:Url id="Help.Url" DefaultValue="https://github.com/chaos-kanbun/kori-word-addin/help.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/addin/taskpane.html"/>
+        <bt:Url id="Help.Url" DefaultValue="https://YOUR-NAME.github.io/YOUR-REPO/help.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="Group.Label" DefaultValue="交利"/>
